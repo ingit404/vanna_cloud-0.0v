@@ -1,4 +1,4 @@
-FROM python:3.11.13
+FROM python:3.11-slim-bookworm
 
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -11,7 +11,9 @@ RUN update-ca-certificates
 
 
 #Install Python Dependencies
+
 COPY requirements.txt .
+RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch==2.8.0
 RUN pip install --no-cache-dir -r  requirements.txt
 
 #sentence transformers
