@@ -1,7 +1,7 @@
-import certifi_win32 
+
 from dotenv import load_dotenv
-from vanna_sql import MyVanna 
-from config  import load_config
+from src.vanna_sql import MyVanna 
+from src.config  import load_config
 from vanna.flask import VannaFlaskApp
 import os,flask
 
@@ -34,9 +34,13 @@ print("Connected to Redshift✅")
 
 #the UI for the users
 app = VannaFlaskApp(vn, allow_llm_to_see_data=True,
-                    csv_download=False,
-                    chart=False,title='Welcome to Vanna.AI')
-app.run()
+                    csv_download=False,chart=False,title='Welcome to Vanna.AI')
+port = int(os.environ.get("PORT", 5000))  
+app.run(host="0.0.0.0", port=port)
+
+print("✅Flask app is running on port", port)
+
+
 
 
 

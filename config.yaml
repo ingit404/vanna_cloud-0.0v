@@ -6,8 +6,8 @@ vector_dim: 1024
 distance: Cosine       # or 'Dot', 'Euclid'
 
 # --- Embedder Settings ---
-embedder_model: intfloat/e5-large-v2  
-
+#embedder_model: intfloat/e5-large-v2  
+embedder_model : C:/Users/Ingit.Paul.in/.cache/huggingface/hub/models--intfloat--e5-large-v2/snapshots/f169b11e22de13617baa190a028a32f3493550b6
 device: cpu                           
 
 # --- Gemini LLM Settings ---
@@ -19,5 +19,5 @@ max_output_tokens: 30000             #length of gemini's output
 # --- Orchestration Settings ---
 allow_llm_to_see_data: True
 
-qdrant_url: https://57085b60-dde8-412d-8609-b5671960eeb3.europe-west3-0.gcp.cloud.qdrant.io:6333
+qdrant_url: https://57085b60-dde8-412d-8609-b5671960eeb3.europe-west3-0.gcp.cloud.qdrant.io
 qdrant_api_key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.hIR8S3da5JCypsIOAIlIuYg6W_-5OY2XZ-jQt9aZsRs

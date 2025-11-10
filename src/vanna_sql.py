@@ -1,15 +1,20 @@
 import vanna
 from vanna.base import VannaBase
-from qdrant_cloud  import MyQdrantVectorStore
-from gemini import GeminiLLM
+from src.qdrant_cloud  import MyQdrantVectorStore
+from src.gemini import GeminiLLM
+
+# class MyVanna(VannaBase,MyQdrantVectorStore, GeminiLLM):
+#     """
+#     Vanna instance using Qdrant for vectorstore and GeminiLLM (custom wrapper) as the LLM.
+#     """
+#     def __init__(self, config=None):        
+#         super().__init__(config=config)
 
 class MyVanna(MyQdrantVectorStore, GeminiLLM, VannaBase):
-    """
-    Vanna instance using Qdrant for vectorstore and GeminiLLM (custom wrapper) as the LLM.
-    """
     def __init__(self, config=None):
-        # ✅ Let Python's MRO handle initialization
-        super().__init__(config=config)
+        VannaBase.__init__(self, config=config)
+        MyQdrantVectorStore.__init__(self, config=config)
+        GeminiLLM.__init__(self)
 
 if __name__ == "__main__":
     print("MyVanna module loaded successfully ✅")

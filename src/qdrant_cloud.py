@@ -29,7 +29,7 @@ class MyQdrantVectorStore(Qdrant_VectorStore):
             url=qdrant_url,
             api_key=api_key,
             timeout=60,
-            prefer_grpc=False )
+            prefer_grpc=False ,verify=False)
 
         # --- ✅ 3. Initialize internal collection names ---
         self.ddl_collection_name = "ddl"
@@ -45,6 +45,7 @@ class MyQdrantVectorStore(Qdrant_VectorStore):
 
         self.collection_params = {}
         self.top_k = cfg.get("top_k", 7)
+        self.n_results = self.top_k 
 
         # --- ✅ 5. Manually ensure collections exist on Qdrant Cloud ---
         for cname in [
